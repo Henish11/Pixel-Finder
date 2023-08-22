@@ -17,19 +17,26 @@ const Search = () => {
   }
   useEffect(()=>{
     getSearchList()
-  },[page])
+  },[page,query])
 
   console.log(searchList);
+
+  const getTopicId = () =>{
+      
+  }
+
+
 
   // Infinite Scroll
   const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop + 1 >=
-      document.documentElement.scrollHeight
+      document.documentElement.scrollHeight - 200
     ) {
       setPage((prev) => prev + 1);
     }
   };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -38,15 +45,21 @@ const Search = () => {
   }, []);
 
   return (
-    <>
+    <div className='searchResult'>
       <div className="container">
-        <div className="photosWrap">
+        <div className="topBar">
+          <h1>{query}</h1>
+        </div>
+        {
+          searchList.length === 0 ? <h2>No Result Found for : {query}</h2> :
+          <div className="photosWrap">
           { searchList.length > 0 && searchList.map((item) => {
             return <PhotoBlock item={item} key={item.id} />;
           })}
         </div>
+        }
       </div>
-    </>
+    </div>
   )
 }
 

@@ -8,3 +8,5 @@ export const DATA_LIST = `${BASE_URL}photos?client_id=${API_KEY}`
 export const RANDOM_PHOTO = `${BASE_URL}photos/random?client_id=${API_KEY}&query='wallpapers`
 
 export const SEARCH_PHOTO = `${BASE_URL}search/photos?client_id=${API_KEY}`
+
+export const LIST_OF_TOPIC = `${BASE_URL}topics?client_id=${API_KEY}`

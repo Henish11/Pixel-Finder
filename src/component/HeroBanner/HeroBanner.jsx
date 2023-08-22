@@ -3,6 +3,7 @@ import React,{useEffect,useState} from 'react'
 import { RANDOM_PHOTO } from "../../utils"
 import { useNavigate } from 'react-router-dom';
 import {IoSearchOutline} from 'react-icons/io5'
+import Img from '../Lazyload/Img';
 
 const HeroBanner = () => {
 
@@ -34,7 +35,8 @@ const HeroBanner = () => {
     
     return (
     <div className="heroBanner">
-        <img
+        <Img
+          className='bannerImage'
           src={randomPhoto?.urls?.raw}
           alt={randomPhoto?.alt_description}
         />

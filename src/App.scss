@@ -4,7 +4,7 @@ header{
     position: fixed;
     width: 100%;
     z-index: 999;
-    background-color: #000;
+    background-color: #fff;
     .container{
         height: 70px;
         display: flex;
@@ -22,33 +22,69 @@ header{
 }
 
 // Images
-
 .photosWrap{
     columns: 3;
     gap: 15px;
-
     .photoBlock{
         display: flex;
         flex-direction: column;
         position: relative;
         margin-bottom: 15px;
         cursor: pointer;
-        box-shadow: 0px 0px 5px rgba(255,255,255,0.2);
+        // box-shadow: 0px 0px 5px rgba(255,255,255,0.2);
         border-radius: 10px;
         img{
             border-radius: 10px;
         }
-    
-        button{
-            padding: 5px 10px;
-            cursor: pointer;
-            margin-bottom: 10px;
+        &:after{
+            content: '';
+            background-color: rgba(0,0,0,0.2); 
             position: absolute;
-            right: 15px;
-            top: 15px;
+            inset: 0;
+            z-index: 1;
+            opacity: 0;
+            border-radius: 10px; 
+            height: calc(100% - 4px);
+            transition: all 0.3s ease-in-out;
+        }
+        &:hover {
+            &::after{
+                opacity: 1;
+            }
+            .hoverBlock{
+                opacity: 1;              
+            }
+        }
+        .downloadIcon{
+            padding: 5px 8px;
+            cursor: pointer;
             border-radius: 5px;
-            outline: 0;
             border: 0;
+            font-size: 20px;
+            display: flex;
+        }
+        .hoverBlock{
+            display: flex;
+            justify-content: space-between;
+            z-index: 2; 
+            opacity: 0;
+            position: absolute;
+            bottom: 20px;
+            padding: 0 20px;
+            width: 100%;
+            color: #fff;
+            transition: all 0.3s ease-in-out;
+            .userInfo{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                img{
+                    width: 32px;
+                    height: 32px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                }
+            }
         }
     }
 } 
@@ -58,7 +94,6 @@ header{
 
 .heroBanner{
     height: 670px;
-    background-color: #f4f4f4;
     margin-bottom: 50px;
     position: relative;
     padding-top: 70px;
@@ -68,6 +103,9 @@ header{
         position: absolute;
         inset: 0;
         z-index: 1;
+    }
+    >span{
+        display: initial !important;
     }
     .searchForm{
        position: absolute;
@@ -107,6 +145,7 @@ header{
     }
 }
 
+// Photo Modal
 .photoModal {
     position: fixed;
     z-index: 9999;
@@ -120,17 +159,60 @@ header{
     .modalContent{
         background-color: #fefefe;
         margin: auto;
-        padding: 50px 20px;
+        padding: 20px 20px;
         border: 1px solid #888;
-        width: 60%;
-        height: 75vh;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
+        width: 100%;
+        max-width: 800px;
+        border-radius: 10px;
         img{
-            width: 100%;
+            border-radius: 10px;
+            height: 600px;
         }
+        .topWrap{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            .userInfo{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                img{
+                    width: 32px;
+                    height: 32px;
+                    background-color: #e0e0e0;
+                    border-radius: 50%;
+                }
+            }
+            .topBtn{
+                display: flex;
+                justify-content: end;
+                gap: 20px;
+                button{
+                    padding: 5px 8px;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    border: 0;
+                    font-size: 20px;
+                    display: flex;
+                    background-color: #c2c2c2;
+                }
+            }
+        }
+        
     }
 }
 
+
+
+// Search Result 
+
+.searchResult{
+    .topBar{
+        padding-top: 120px;
+        h1{
+            text-transform: capitalize;
+            margin-bottom: 15px;
+            font-size: 40px;
+        }
+    }
+}
