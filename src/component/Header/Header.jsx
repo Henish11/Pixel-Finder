@@ -29,8 +29,8 @@ const Header = () => {
             </div>
             <div className="rightBlock">
               {
-                topics.map((topic)=>{
-                   return <Link to={`/photos/${topic.title}`}>{topic.title}</Link>
+                topics.map((topic,index)=>{
+                   return <Link key={index} to={`/photos/${topic.title}`}>{topic.title}</Link>
                 })
               }
             </div>

@@ -240,6 +240,7 @@ header{
     .photoModal{
         .modalContent{
             width: 90vw;
+            padding: 15px;
             img{
                 height: 400px;
             }
@@ -271,5 +272,23 @@ header{
             }
         }  
     }
+    header{
+        .leftBlock a {svg{
+            height: 45px;
+            width: 200px;
+        }}
+        .rightBlock{
+            display: none;
+        }
+        .container{
+            justify-content: center;
+            height: 70px;
+        }
+    }
+    .searchResult {.topBar {
+        padding-top: 95px; h1{
+            font-size: 35px;
+        }
+    }}
 
 }
