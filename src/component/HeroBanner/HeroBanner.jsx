@@ -42,7 +42,8 @@ const HeroBanner = () => {
         />
             
         <form className='searchForm' onSubmit={handleSubmit}>
-          <h1>Pixel Finder</h1>
+          <h1>Discover Stunning Free Images at Pixel Finder</h1>
+          <p> Your ultimate destination for high-quality free image downloads. Unlock a world of visual inspiration without any cost, only at Pixel Finder.</p>
           <input type="text" placeholder="Search high-resolution images" value={query} onChange={(e)=>{setQuery(e.target.value)}}/>
           <button type="submit"><IoSearchOutline/></button>
         </form>

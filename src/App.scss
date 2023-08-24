@@ -6,18 +6,26 @@ header{
     z-index: 999;
     background-color: #fff;
     .container{
-        height: 70px;
+        height: 75px;
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
     .rightBlock{
         display: flex;
-        gap: 30px;
+        gap: 20px;
+        a{
+            font-size: 14px;
+            color: #6c6c6c;
+        }
     }
-    .leftBlock .siteLogo path,
-    .leftBlock .siteLogo rect{
-        fill: #000;
+    .leftBlock a{
+        display: block;
+        line-height: 0;
+        svg {
+            height: 50px;
+            width: 230px;
+        }
     }
 }
 
@@ -118,9 +126,15 @@ header{
        z-index: 9;
        h1{
         color: #fff;
-        font-size: 40px;
-        line-height: 50px;
+        font-size: 30px;
+        line-height: 40px;
+        font-weight: 400;
         margin-bottom: 20px;
+       }
+       p{
+        color:#fff;
+        margin-bottom: 20px;
+        line-height: 25px;
        }
        input{
          padding: 10px 20px;
@@ -141,6 +155,7 @@ header{
         background-color: transparent;
         font-size: 20px;
         color: #6c6c6c;
+        margin-top: 2px;
        }
     }
 }
@@ -162,7 +177,7 @@ header{
         padding: 20px 20px;
         border: 1px solid #888;
         width: 100%;
-        max-width: 800px;
+        max-width: 1000px;
         border-radius: 10px;
         img{
             border-radius: 10px;
@@ -194,7 +209,7 @@ header{
                     border: 0;
                     font-size: 20px;
                     display: flex;
-                    background-color: #c2c2c2;
+                    background-color: #e5e5e5;
                 }
             }
         }
@@ -203,9 +218,7 @@ header{
 }
 
 
-
 // Search Result 
-
 .searchResult{
     .topBar{
         padding-top: 120px;
@@ -215,4 +228,48 @@ header{
             font-size: 40px;
         }
     }
+}
+
+// Responsive
+
+@media (max-width:1023px){
+
+    .photosWrap{
+        columns: 2;
+    }
+    .photoModal{
+        .modalContent{
+            width: 90vw;
+            img{
+                height: 400px;
+            }
+        }
+    }
+}
+
+@media (max-width:767px){
+    .photosWrap{
+        columns: 1;
+    }
+    .photosWrap{
+        .photoBlock{
+            &:after{
+                opacity: 1;
+            }
+            .hoverBlock{
+                opacity: 1;
+            }
+        }
+    }
+    .heroBanner {
+        height: 500px;
+        .searchForm {
+            padding: 0 20px;
+            button{
+                right: 35px;
+
+            }
+        }  
+    }
+
 }

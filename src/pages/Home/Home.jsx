@@ -26,12 +26,25 @@ const Home = () => {
   }, [page]);
 
   // Infinite Scroll
+  const myDebouunce = (cb,delay)=>{
+    let timer;
+    return function(){
+      if(timer) clearTimeout(timer)
+      timer = setTimeout(()=>{
+          cb()
+       },delay)
+    }
+ }
+ const debounce = myDebouunce(()=>{
+   setPage((prev) => prev + 1);
+ },200)
+
   const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop + 1 >=
-      document.documentElement.scrollHeight - 200
+      document.documentElement.scrollHeight - 500
     ) {
-      setPage((prev) => prev + 1);
+      debounce()
     }
   };
   useEffect(() => {

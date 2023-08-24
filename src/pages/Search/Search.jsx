@@ -8,32 +8,42 @@ const Search = () => {
 
   const [searchList,setSearchList] = useState([])
   const [page,setPage] = useState(1)
-  const {query} = useParams()
-  console.log(query);
+  const queryData = useParams()
+  const updatedQuery = queryData.query.replaceAll(' & ','-')
+
+  console.log(updatedQuery);
 
   const getSearchList = async () =>{
-    const result = await axios.get(`${SEARCH_PHOTO}&query=${query}&page=${page}`)
+    const result = await axios.get(`${SEARCH_PHOTO}&query=${updatedQuery}&page=${page}`)
     setSearchList((prev)=>[...prev,...result?.data?.results])
   }
   useEffect(()=>{
     getSearchList()
-  },[page,query])
+  },[page,updatedQuery])
 
   console.log(searchList);
 
-  const getTopicId = () =>{
-      
-  }
-
-
 
   // Infinite Scroll
+
+  const myDebouunce = (cb,delay)=>{
+     let timer;
+     return function(){
+       if(timer) clearTimeout(timer)
+       timer = setTimeout(()=>{
+           cb()
+        },delay)
+     }
+  }
+  const debounce = myDebouunce(()=>{
+    setPage((prev) => prev + 1);
+  },200)
+
   const handleScroll = () => {
     if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
-      document.documentElement.scrollHeight - 200
+      window.innerHeight + document.documentElement.scrollTop + 1 >=  document.documentElement.scrollHeight - 500
     ) {
-      setPage((prev) => prev + 1);
+      debounce()
     }
   };
 
@@ -48,10 +58,10 @@ const Search = () => {
     <div className='searchResult'>
       <div className="container">
         <div className="topBar">
-          <h1>{query}</h1>
+          <h1>{updatedQuery}</h1>
         </div>
         {
-          searchList.length === 0 ? <h2>No Result Found for : {query}</h2> :
+          searchList.length === 0 ? setTimeout(()=>{<h2>No Result Found for : {updatedQuery}</h2>},100)  :
           <div className="photosWrap">
           { searchList.length > 0 && searchList.map((item) => {
             return <PhotoBlock item={item} key={item.id} />;

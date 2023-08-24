@@ -15,7 +15,7 @@ const Header = () => {
 
   useEffect(() => {
     gettopic()
-  },[topics])
+  },[])
   
   console.log(topics);
 
@@ -24,7 +24,7 @@ const Header = () => {
         <div className="container">
             <div className="leftBlock">
               <Link to='/'>
-                <h1>Logo</h1>
+                <SiteLogo/>
               </Link>
             </div>
             <div className="rightBlock">
